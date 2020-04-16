@@ -1,0 +1,2 @@
+rootProject.name='CP3406-GuessTheCeleb'
+include ':app'
