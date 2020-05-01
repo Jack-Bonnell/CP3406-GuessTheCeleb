@@ -1,4 +1,4 @@
-package com.example.cp3406_guesstheceleb;
+package com.example.cp3406_guesstheceleb.game;
 
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
@@ -8,17 +8,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 
-public class ImageManager {
+public class CelebrityManager {
     private String assetPath;
     private String[] imageNames;
     private AssetManager assetManager;
 
-    ImageManager(AssetManager assetManager, String assetPath) {
+    public CelebrityManager(AssetManager assetManager, String assetPath) {
         this.assetManager = assetManager;
         this.assetPath = assetPath;
     }
 
-    Bitmap get(int i) {
+    public Bitmap get(int i) {
         try{
             String[] imageNames = assetManager.list("celebs");
             InputStream stream = assetManager.open("celebs/" + imageNames[i]);
@@ -27,6 +27,16 @@ public class ImageManager {
         }catch (IOException e){
             return null;
         }
+    }
+
+    public String getName(int i) {
+        String[] name = (this.list()).split(",");
+        return(name[i]);
+    }
+
+    public int count() {
+        String[] name = (this.list()).split(",");
+        return(name.length);
     }
 
     public String list() {
